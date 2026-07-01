@@ -9,9 +9,6 @@ import plotly.graph_objects as go
 
 from fintools.figures import recession_windows_for_range
 
-from .forecasting import ForecastResult
-from .targets import TargetForecastResult
-
 APP_COLORS = {
     "observed": "#355C7D",
     "forecast": "#A51C30",
@@ -145,7 +142,7 @@ def _series_range(series: pd.Series, extra_dates: Sequence[object] = ()) -> tupl
 
 
 def forecast_figure(
-    result: ForecastResult,
+    result: object,
     *,
     units: str,
     indicator_name: str | None = None,
@@ -221,7 +218,7 @@ def forecast_figure(
 
 
 def target_forecast_figure(
-    result: TargetForecastResult,
+    result: object,
     *,
     indicator_name: str | None = None,
     shade_recessions: bool = True,
