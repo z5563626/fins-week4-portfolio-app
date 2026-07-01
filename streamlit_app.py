@@ -11,14 +11,12 @@ from pathlib import Path
 
 # ── path setup ────────────────────────────────────────────────────────────────
 _APP_DIR = Path(__file__).resolve().parent
-_SCRIPTS_DIR = _APP_DIR.parent  # week4_dff_lecture_scripts/
 _REPO_ROOT = next(
-    (p for p in _APP_DIR.parents if (p / "fintools").is_dir()),
-    _APP_DIR.parents[5],
+    (p for p in [_APP_DIR, *_APP_DIR.parents] if (p / "fintools").is_dir()),
+    _APP_DIR,
 )
-for _p in (_SCRIPTS_DIR, _REPO_ROOT):
-    if str(_p) not in sys.path:
-        sys.path.insert(0, str(_p))
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
 
 import functools
 
